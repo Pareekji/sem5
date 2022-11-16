@@ -1,0 +1,39 @@
+Add SQLDATASOURCE to home page
+right click and configure your database
+phir dtabase aayega then connection string = dbconnect
+select table 
+test query
+finish
+
+ADD gridview
+chose sqldata source 
+auto formatt
+
+click on button
+
+using System.Data.Sqlclient;
+using System.Configuration;        ---     yeh dono upar likhna hai
+
+protected wale ke bad
+
+try    {
+
+sqlconnection con = new sqlconnecton(configurationmanager.connectionStrings["dbconnect"].connectionString);
+con.open();
+string insert = "insert into TABLENAME (columnname,columnname) values(@columnname,@columnname)";
+sqlcommand cmd= new sqlcommand(insert,con);
+cmd.parameter.Addwithvalue(@columnname , Textbox1.Text);
+cmd.parameter.Addwithvalue(@columnname , Textbox2.Text);
+cmd.ExecuteNonQuery();
+Response.Redirect("home.aspx");
+
+con.close();
+}
+      catch(Exception ex)
+      
+      {
+      REsponse.write(ex);
+      }
+
+}
+
